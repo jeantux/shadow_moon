@@ -8,8 +8,8 @@ defmodule ShadowMoon do
 
   ## Examples
 
-      iex> ShadowMoon.hello()
-      :world
+      iex> ShadowMoon.show_proccess()
+      ...
 
   """
   import ProcessManager
