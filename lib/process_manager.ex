@@ -24,24 +24,35 @@ defmodule ProcessManager do
         |> String.split("|")
     end
 
-    def process_in_list([head | tail], content \\ []) do
+    def process_in_list([head | []]) do
+        head
+    end
+
+    def process_in_list([head | tail]) do
         n_head = break_lines head
-        n_content = content ++ [n_head]
-        case tail do
-            [] -> n_content
-            _l -> process_in_list(tail, n_content)
-        end
+        [n_head] ++ process_in_list(tail)
+    end
+
+    def ao_to_string([head | []]) do
+        Atom.to_string(head)
+    end
+    def ao_to_string([head | tail]) do
+        Atom.to_string(head) <> "," <> ao_to_string(tail)
     end
 
     def ps_all do
+        ps([:pid, :user, :pri, :nice, :pcpu, :pmem, :time, :comm])
+    end
+
+    def ps(cols) do
         user = whoami()
-        params = ["-ao", "pid,user,pri,nice,pcpu,pmem,time,comm", "-U", user]
+        ao = ao_to_string(cols)
+        params = ["-ao", ao, "-U", user]
         process = System.cmd("ps", params)
         [head, _tail] = Tuple.to_list process
-        
+
         String.split(head, "\n")
         |> process_in_list
     end
-
 
 end
