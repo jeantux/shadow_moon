@@ -8,13 +8,14 @@ defmodule ProcessManager do
 
     def remove_space(content, by_char) do
         content
-        |> String.replace("        ", by_char)   
-        |> String.replace("       ", by_char)   
-        |> String.replace("      ", by_char)        
-        |> String.replace("     ", by_char)        
-        |> String.replace("    ", by_char)        
+        |> String.replace("        ", by_char)
+        |> String.replace("       ", by_char)
+        |> String.replace("      ", by_char)
+        |> String.replace("     ", by_char)
+        |> String.replace("    ", by_char)
         |> String.replace("   ", by_char)
         |> String.replace("  ", by_char)
+        |> String.replace(" ", by_char)
     end
 
     def break_lines(head) do
@@ -53,6 +54,10 @@ defmodule ProcessManager do
 
         String.split(head, "\n")
         |> process_in_list
+    end
+
+    def detail_process(pid) do
+        File.read("/proc/#{pid}/status")
     end
 
 end
