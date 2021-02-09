@@ -8,8 +8,6 @@ defmodule ShadowMoon do
 
   ## Examples
 
-      iex> ShadowMoon.show_proccess()
-      ...
 
   """
   import ProcessManager
