@@ -19,10 +19,15 @@ defmodule DetailProcess do
   end
 
   def status(pid) do
-    {_status, content} = File.read("/proc/#{pid}/status")
+    file = "/proc/#{pid}/status"
+    if (File.exists?(file)) do
+      {_status, content} = File.read(file)
 
-    String.replace(content, "\t", "")
-    |> String.split("\n")
-    |> status_to_struct(%{})
+      String.replace(content, "\t", "")
+      |> String.split("\n")
+      |> status_to_struct(%{})
+    else
+      {:none, pid}
+    end
   end
 end
