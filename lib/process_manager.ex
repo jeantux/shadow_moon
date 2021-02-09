@@ -68,9 +68,4 @@ defmodule ProcessManager do
         |> process_in_list
         |> convert_to_struct
     end
-
-    def detail_process(pid) do
-        File.read("/proc/#{pid}/status")
-    end
-
 end
