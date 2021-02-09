@@ -16,13 +16,34 @@ defmodule ProcessManager do
         |> String.split("|")
     end
 
-    def process_in_list([head | []]) do
-        head
+    def process_in_list([_head | []]) do
+        []
     end
 
     def process_in_list([head | tail]) do
         n_head = break_lines head
         [n_head] ++ process_in_list(tail)
+    end
+
+    def add_item(struct_default ,[], []) do
+        struct_default
+    end
+    def add_item(struct_default ,keys, values) do
+        [key | others_keys] = keys
+        [value | others_values] = values
+
+        Map.put(struct_default, String.to_atom(key), value)
+        |> add_item(others_keys, others_values)
+    end
+
+    def convert_to_struct(_title, []) do
+        []
+    end
+    def convert_to_struct(title, [head | tail]) do
+        [add_item(%{}, title, head)] ++ convert_to_struct(title, tail)
+    end
+    def convert_to_struct([title | process]) do
+        convert_to_struct(title, process)
     end
 
     def ao_to_string([head | []]) do
@@ -45,6 +66,7 @@ defmodule ProcessManager do
 
         String.split(head, "\n")
         |> process_in_list
+        |> convert_to_struct
     end
 
     def detail_process(pid) do
