@@ -7,7 +7,7 @@ defmodule ProcessManager do
     end
 
     def remove_space(content, by_char) do      
-        Regex.replace(~r/ {2,}/, String.trim(content), by_char)
+        Regex.replace(~r/ {1,}/, String.trim(content), by_char)
     end
 
     def break_lines(head) do
