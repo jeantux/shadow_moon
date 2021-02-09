@@ -1,6 +1,24 @@
 # ShadowMoon
 
-**TODO: Add description**
+Shadow Moon is a package with methods to preview process running in linux system.
+
+```elixir
+  ShadowMoon.show_proccess
+
+[
+  %{
+    "%CPU": "0.0",
+    "%MEM": "0.1",
+    COMMAND: "systemd",
+    NI: "0",
+    PID: "854",
+    PRI: "19",
+    TIME: "00:00:00",
+    USER: "shadow"
+  },
+  ...
+]
+
 
 ## Installation
 
@@ -15,7 +33,4 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/shadow_moon](https://hexdocs.pm/shadow_moon).
 
