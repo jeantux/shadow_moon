@@ -6,21 +6,12 @@ defmodule ProcessManager do
         |> String.trim
     end
 
-    def remove_space(content, by_char) do
-        content
-        |> String.replace("        ", by_char)
-        |> String.replace("       ", by_char)
-        |> String.replace("      ", by_char)
-        |> String.replace("     ", by_char)
-        |> String.replace("    ", by_char)
-        |> String.replace("   ", by_char)
-        |> String.replace("  ", by_char)
-        |> String.replace(" ", by_char)
+    def remove_space(content, by_char) do      
+        Regex.replace(~r/ {2,}/, String.trim(content), by_char)
     end
 
     def break_lines(head) do
         head
-        |> String.trim
         |> remove_space("|")
         |> String.split("|")
     end
