@@ -1,4 +1,4 @@
-# ShadowMoon
+<img style="display:block;text-align:center; width: 50px" src="https://github.com/jeaanca/shadow_moon/blob/master/assets/images/shadow_moon_logo.png"><br>
 
 <p> Shadow Moon is a package with methods to preview process running in linux system. </p>
 <p> All struct of the project is based in linux system, the metrics of process was constucted using native resources from machine </p>
@@ -7,7 +7,7 @@
 
 ## Usage
 
-
+To List all process:
 ```elixir
   ShadowMoon.show_proccess
 
@@ -26,6 +26,29 @@
 # ]
 
 ```
+
+To list details of process usind the PID:
+```elixir
+  ShadowMoon.detail_process(9999)
+
+# {
+#   VmStk: "132 kB",
+#   FDSize: "64",
+#   Cpus_allowed: "f",
+#   VmSize: "308684 kB",
+...
+#   VmExe: "16 kB",
+...
+#   VmSwap: "0 kB",
+...
+#   Name: "gsd-housekeepin",
+...
+#   VmData: "34052 kB",
+#   Uid: "1000100010001000",
+  ...
+}
+```
+
 ## Installation
 
 The package can be installed
