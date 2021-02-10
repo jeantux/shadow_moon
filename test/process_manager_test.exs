@@ -14,4 +14,22 @@ defmodule ProcessManagerTest do
              "title4"
            ]
   end
+
+  test "conversion of list to struct" do
+    process = [
+      ["PID", "Name", "User"],
+      ["001", "Shadow", "shadow_moon"],
+      ["002", "systemd", "shadow_moon"]
+    ]
+
+    assert ProcessManager.convert_to_struct(process) == [
+             %{Name: "Shadow", PID: "001", User: "shadow_moon"},
+             %{Name: "systemd", PID: "002", User: "shadow_moon"}
+           ]
+  end
+
+  test "atom to string in args format" do
+    assert ProcessManager.ao_to_string([:pid, :user, :pri, :nice, :pcpu, :pmem, :time, :comm]) ==
+             "pid,user,pri,nice,pcpu,pmem,time,comm"
+  end
 end

@@ -20,7 +20,8 @@ defmodule DetailProcess do
 
   def status(pid) do
     file = "/proc/#{pid}/status"
-    if (File.exists?(file)) do
+
+    if File.exists?(file) do
       {_status, content} = File.read(file)
 
       String.replace(content, "\t", "")
