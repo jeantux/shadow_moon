@@ -1,4 +1,4 @@
-# ShadowMoon
+<img style="display:block;text-align:center; width: 50px" src="https://github.com/jeaanca/shadow_moon/blob/master/assets/images/shadow_moon_logo.png"><br>
 
 <p> Shadow Moon is a package with methods to preview process running in linux system. </p>
 <p> All struct of the project is based in linux system, the metrics of process was constucted using native resources from machine </p>
