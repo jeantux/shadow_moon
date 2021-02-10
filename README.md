@@ -7,7 +7,7 @@
 
 ## Usage
 
-
+To List all process:
 ```elixir
   ShadowMoon.show_proccess
 
@@ -26,6 +26,29 @@
 # ]
 
 ```
+
+To list details of process usind the PID:
+```elixir
+  ShadowMoon.detail_process(9999)
+
+# {
+#   VmStk: "132 kB",
+#   FDSize: "64",
+#   Cpus_allowed: "f",
+#   VmSize: "308684 kB",
+...
+#   VmExe: "16 kB",
+...
+#   VmSwap: "0 kB",
+...
+#   Name: "gsd-housekeepin",
+...
+#   VmData: "34052 kB",
+#   Uid: "1000100010001000",
+  ...
+}
+```
+
 ## Installation
 
 The package can be installed
