@@ -27,6 +27,16 @@ To List all process:
 
 ```
 
+To list details of process usind the PID and passing as an argument the columns required
+```elixir
+  ShadowMoon.detail_process(9999, [:Name, :VmData])
+
+# {
+#   Name: "gsd-housekeepin",
+#   VmData: "34052 kB"
+}
+```
+
 To list details of process usind the PID:
 ```elixir
   ShadowMoon.detail_process(9999)
