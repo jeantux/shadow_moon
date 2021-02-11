@@ -18,6 +18,6 @@ defmodule ShadowMoon do
   end
 
   def detail_process(pid) do
-    status(pid)
+    status_all(pid)
   end
 end

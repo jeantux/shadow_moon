@@ -18,7 +18,29 @@ defmodule DetailProcess do
     end
   end
 
-  def status(pid) do
+  def get_cols_status(data, list, current_struct \\ %{})
+
+  def get_cols_status(_data, [], current_struct) do
+    current_struct
+  end
+
+  def get_cols_status(data, [head | tail], current_struct) do
+    value = Map.get(data, head)
+
+    if value != nil do
+      new_struct = Map.put(current_struct, head, value)
+      get_cols_status(data, tail, new_struct)
+    else
+      get_cols_status(data, tail, current_struct)
+    end
+  end
+
+  def status(pid, cols) do
+    status_all(pid)
+    |> get_cols_status(cols)
+  end
+
+  def status_all(pid) do
     file = "/proc/#{pid}/status"
 
     if File.exists?(file) do
