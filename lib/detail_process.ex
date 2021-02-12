@@ -40,6 +40,37 @@ defmodule DetailProcess do
     |> get_cols_status(cols)
   end
 
+  def get_parent_process(pid) do
+    file = "/proc/#{pid}/task/#{pid}/status"
+
+    if File.exists?(file) do
+      {_status, content} = File.read(file)
+
+      [pos | _] = Regex.run(~r/PPid/, content, return: :index)
+      {pos, _} = pos
+      pid = String.slice(content, pos, 15)
+      [_, pid] = String.split(pid, "\t")
+      [pid, _] = String.split(pid, "\n")
+      pid
+    else
+      {:none, pid}
+    end
+  end
+
+  def pid_child_process(pid) do
+    file = "/proc/#{pid}/task/#{pid}/children"
+
+    if File.exists?(file) do
+      {_status, content} = File.read(file)
+
+      content
+      |> String.trim()
+      |> String.split(" ")
+    else
+      {:none, pid}
+    end
+  end
+
   def status_all(pid) do
     file = "/proc/#{pid}/status"
 
