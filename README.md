@@ -34,7 +34,7 @@ To list details of process usind the PID and passing as an argument the columns 
 # {
 #   Name: "gsd-housekeepin",
 #   VmData: "34052 kB"
-}
+# }
 ```
 
 To list details of process usind the PID:
@@ -46,15 +46,6 @@ To list details of process usind the PID:
 #   FDSize: "64",
 #   Cpus_allowed: "f",
 #   VmSize: "308684 kB",
-...
-#   VmExe: "16 kB",
-...
-#   VmSwap: "0 kB",
-...
-#   Name: "gsd-housekeepin",
-...
-#   VmData: "34052 kB",
-#   Uid: "1000100010001000",
   ...
 }
 ```
