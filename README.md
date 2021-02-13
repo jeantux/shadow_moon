@@ -58,7 +58,7 @@ by adding `shadow_moon` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:shadow_moon, git: "https://github.com/jeaanca/shadow_moon.git", tag: "0.1.0"}
+    {:shadow_moon, git: "https://github.com/jeaanca/shadow_moon.git"}
   ]
 end
 ```
