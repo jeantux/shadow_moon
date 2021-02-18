@@ -1,13 +1,19 @@
 defmodule ShadowMoon.MixProject do
   use Mix.Project
 
+  @description "Shadow Moon is a package with methods to preview process running in linux system"
+  @source_url "https://github.com/jeaanca/shadow_moon"
+  @version "0.1.0"
+
   def project do
     [
       app: :shadow_moon,
-      version: "0.1.0",
+      version: @version,
+      description: @description,
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      docs: docs()
     ]
   end
 
@@ -15,6 +21,18 @@ defmodule ShadowMoon.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp docs do
+    [
+      extras: ["CHANGELOG.md", {:"README.md", [title: "Overview"]}],
+      main: "readme",
+      assets: "assets",
+      logo: "assets/images/shadow_moon_logo.png",
+      source_url: @source_url,
+      source_ref: "v#{@version}",
+      skip_undefined_reference_warnings_on: ["CHANGELOG.md"]
     ]
   end
 
