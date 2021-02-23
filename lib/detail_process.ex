@@ -3,9 +3,7 @@ defmodule DetailProcess do
     String.split(content, ":")
   end
 
-  def status_to_struct([], struct) do
-    struct
-  end
+  def status_to_struct([], struct), do: struct
 
   def status_to_struct([head | tail], struct) do
     [key | value] = get_key_value(head)
@@ -84,4 +82,5 @@ defmodule DetailProcess do
       {:none, pid}
     end
   end
+
 end
