@@ -40,10 +40,10 @@ defmodule ProcessManager do
 
   def convert_to_struct([title | process]), do: convert_to_struct(title, process)
 
-  def ao_to_string([head | []]), do: Atom.to_string(head)
-
-  def ao_to_string([head | tail]) do
-    Atom.to_string(head) <> "," <> ao_to_string(tail)
+  def ao_to_string(param) do
+    param
+    |> Enum.map(fn value -> Atom.to_string(value) end)
+    |> Enum.reduce(fn p1, p2 -> p2 <> "," <> p1 end)
   end
 
   def ps_all do
