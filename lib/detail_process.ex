@@ -1,7 +1,5 @@
 defmodule DetailProcess do
-  def get_key_value(content) do
-    String.split(content, ":")
-  end
+  def get_key_value(content), do: String.split(content, ":")
 
   def status_to_struct([], struct), do: struct
 
